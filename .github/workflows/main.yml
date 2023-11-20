@@ -1,0 +1,38 @@
+name: Build LateX
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Git repository
+      uses: actions/checkout@v1
+    - name: Compile Version 1
+      uses: xu-cheng/latex-action@master
+      with:
+        root_file: krishnakishore.tex
+        working_directory: resume
+    - name: Check pdf files
+      run: |
+        file resume/krishnakishore.pdf | grep -q ' PDF '
+    - name: Upload
+      run: |
+        # configure git
+        git config --global user.name "Tummala Krishna Kishore"
+        git config --global user.email "imwebruster@gmail.com"
+        # setup ssh
+        mkdir ~/.ssh
+        chmod 700 ~/.ssh
+        echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+        git clone --depth=1 --branch gh-pages git@github.com:itskrsna/resume-latex.git "$GITHUB_WORKSPACE/deploy"
+        cp -f resume/krishnakishore.pdf "$GITHUB_WORKSPACE/deploy/krishnakishore.pdf"
+        cd "$GITHUB_WORKSPACE/deploy"
+        git add Resume_RishabhVerma_SDE.pdf
+        git commit -m "[github actions] deploy"
+        git push
+      env:
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
