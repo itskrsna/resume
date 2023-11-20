@@ -28,7 +28,7 @@ jobs:
         echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
         git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-        git clone --depth=1 --branch gh-pages git@github.com:itskrsna/resume-latex.git "$GITHUB_WORKSPACE/deploy"
+        git clone --depth=1 --branch gh-pages git@github.com:itskrsna/resume.git "$GITHUB_WORKSPACE/deploy"
         cp -f resume/krishnakishore.pdf "$GITHUB_WORKSPACE/deploy/krishnakishore.pdf"
         cd "$GITHUB_WORKSPACE/deploy"
         git add krishnakishore.pdf -f
