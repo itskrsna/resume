@@ -31,7 +31,7 @@ jobs:
         git clone --depth=1 --branch gh-pages git@github.com:itskrsna/resume-latex.git "$GITHUB_WORKSPACE/deploy"
         cp -f resume/krishnakishore.pdf "$GITHUB_WORKSPACE/deploy/krishnakishore.pdf"
         cd "$GITHUB_WORKSPACE/deploy"
-        git add krishnakishore.pdf
+        git add krishnakishore.pdf -f
         git commit -m "[github actions] deploy"
         git push
       env:
