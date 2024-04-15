@@ -10,7 +10,7 @@ jobs:
     - name: Set up Git repository
       uses: actions/checkout@v1
     - name: Compile Version 1
-      uses: xu-cheng/latex-action@master
+      uses: xu-cheng/texlive-action@v2
       with:
         root_file: krishnakishore.tex
         working_directory: resume
