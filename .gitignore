@@ -300,5 +300,4 @@ TSWLatexianTemp*
 #*Notes.bib
 *.pub
 tmp
-output
 gh-pages
