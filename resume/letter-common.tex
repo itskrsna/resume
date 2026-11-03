@@ -1,0 +1,27 @@
+% Shared layout for role-specific cover letters.
+% Each letter defines \company, \position, \lettertext BEFORE \input{letter-common}.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage[left=2.2cm,right=2.2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\definecolor{VividPurple}{HTML}{3E0097}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+\pagestyle{empty}
+
+\begin{document}
+{\LARGE\bfseries\color{VividPurple} Tummala Krishna Kishore}\[2pt]
+{\small imwebruster@gmail.com \textbullet{} +91-9985853599 \textbullet{} krishnakishore.co.in \textbullet{} linkedin.com/in/itskrsna}
+
+\vspace{1.2em}
+\today
+
+Dear Hiring Manager,
+
+\lettertext
+
+Best regards,\
+T Krishna Kishore
+\end{document}
