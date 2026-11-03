@@ -88,9 +88,9 @@
 %% krishnakishore.bib contains your publications
 \addbibresource{krishnakishore.bib}
 
-%% Role profile: set with \def\roleid{...} before \input (see krishnakishore-cloud.tex).
-%% Defaults to the AI profile. Profiles live in roles/<roleid>.tex
-\providecommand{\roleid}{ai}
+%% Role profile: set with \def\roleid{...} before \input (see krishnakishore-ai.tex).
+%% Defaults to the public (cloud) profile. Profiles live in roles/<roleid>.tex
+\providecommand{\roleid}{cloud}
 \input{roles/\roleid}
 
 \begin{document}
@@ -144,6 +144,8 @@
 
 \cvsection{Experience}
 
+%% AI-only content is wrapped in \ifshowai ... \fi (set per profile in roles/<roleid>.tex)
+\ifshowai
 \cvevent{AI Solutions Architect (Freelance)}{NewMEK}{2024 -- Ongoing}{Remote}
 \begin{itemize}
 \item Architected an AI-driven hiring platform using Retrieval-Augmented Generation and Agentic AI, orchestrated with LangChain and LangGraph on Azure OpenAI, automating candidate document generation, and audio/video/resume profile extraction.
@@ -153,14 +155,17 @@
 \end{itemize}
 
 \divider
+\fi
 
-\cvevent{AI \& Cloud Solutions Architect}{ACG}{May 2024 -- Ongoing}{Hyderabad, IN}
+\cvevent{\roleacgtitle}{ACG}{May 2024 -- Ongoing}{Hyderabad, IN}
 \begin{itemize}
 \item Architected and implemented a cloud-native supply chain management platform on Azure using Dotnet, Angular, and GraphQL, optimizing scalability and performance while ensuring seamless migration from on-premise systems.
 \item Designed infrastructure-as-code with Terraform, enabling 50\% faster provisioning and achieving 99.9\% uptime, while establishing cloud architecture patterns for enhanced system scalability.
 \item Developed an open-source EPCIS validation package, reducing syntax errors by 80\% and ensuring compliance with EPCIS 1.2 and 2.0, driving global market adoption and increasing recurring revenue.
+\ifshowai
 \item Built a natural-language virtual assistant on Azure OpenAI and Azure AI Services, layered onto the supply chain platform to let users query shipment and EPCIS compliance status conversationally.
 \item Lead and mentor a small AI engineering team, owning technical direction for AI-driven features and driving delivery of AI solutions across the platform.
+\fi
 \end{itemize}
 
 \divider
@@ -169,7 +174,9 @@
 \begin{itemize}
 \item Led full-stack architecture and development on Chevron Tengiz System Completion Tool, building responsive frontend interfaces using React.js and backend services on .NET Core.
 \item Designed and implemented Azure cloud infrastructure: Function Apps, App Services, Azure Data Factory, Azure Active Directory, and Storage Accounts.
+\ifshowai
 \item Added a natural-language understanding layer to the System Completion Tool using Microsoft LUIS and Azure Cognitive Services, enabling engineers to query completion status and reports conversationally.
+\fi
 
 \end{itemize}
 
@@ -180,7 +187,9 @@
 \item Adverse News Detection: Architected a KYC-compliant ML platform enabling clients to detect compliance risks via machine learning. Designed cloud services and web application layers to support Python-based AI/ML models.
 \item Developed a cloud-first solution for a Belgium-based financial services company, which is responsible for handling the settlement of securities along with the safekeeping and asset servicing of these securities.
 \item The application aimed to provide issuers with valuable insights into the structure of their shareholding and the intermediaries a simple and easy mechanism to be compliant with new SRD II obligations
+\ifshowai
 \item Built a compliance-query chatbot and Alexa voice skill using Botpress, Microsoft Bot Framework, and NLP techniques, giving analysts conversational and voice-based access to adverse-news and KYC search results.
+\fi
 
 \end{itemize}
 

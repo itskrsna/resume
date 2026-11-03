@@ -3,9 +3,9 @@ name: Build LaTeX
 on:
   push:
     branches: [main]
-    paths: ['resume/**', '.github/workflows/main.yml', '.github/scripts/**']
+    paths: ['resume/**', 'site/**', '.github/workflows/main.yml', '.github/scripts/**']
   pull_request:
-    paths: ['resume/**', '.github/workflows/main.yml', '.github/scripts/**']
+    paths: ['resume/**', 'site/**', '.github/workflows/main.yml', '.github/scripts/**']
   workflow_dispatch:
     inputs:
       company:
@@ -45,7 +45,7 @@ jobs:
           working_directory: resume
           root_file: |
             krishnakishore.tex
-            krishnakishore-cloud.tex
+            krishnakishore-ai.tex
             cover-letter-ai.tex
             cover-letter-cloud.tex
           latexmk_use_xelatex: false
@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           cd resume
-          for f in krishnakishore krishnakishore-cloud cover-letter-ai cover-letter-cloud; do
+          for f in krishnakishore krishnakishore-ai cover-letter-ai cover-letter-cloud; do
             test -s "$f.pdf" || { echo "::error::$f.pdf missing or empty"; exit 1; }
             file "$f.pdf" | grep -q ' PDF ' || { echo "::error::$f.pdf is not a PDF"; exit 1; }
             if command -v pdfinfo >/dev/null; then
@@ -104,7 +104,7 @@ jobs:
           name: pdfs
           path: |
             resume/krishnakishore.pdf
-            resume/krishnakishore-cloud.pdf
+            resume/krishnakishore-ai.pdf
             resume/cover-letter-ai.pdf
             resume/cover-letter-cloud.pdf
           if-no-files-found: error
@@ -120,6 +120,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          path: src
+
+      - uses: actions/checkout@v4
+        with:
           ref: gh-pages
           path: deploy
 
@@ -131,11 +135,16 @@ jobs:
       - name: Publish to gh-pages
         run: |
           set -euo pipefail
-          cp -f pdfs/*.pdf deploy/
+          # Public site gets ONLY the cloud profile. The AI resume/letter stay
+          # in the build artifact (private) and are never copied to gh-pages.
+          cp -f pdfs/krishnakishore.pdf pdfs/cover-letter-cloud.pdf deploy/
+          git -C deploy rm -q -f --ignore-unmatch krishnakishore-ai.pdf krishnakishore-cloud.pdf cover-letter-ai.pdf
+          cp -f src/site/index.html deploy/index.html
+          touch deploy/.nojekyll   # serve files as-is, skip Jekyll theme processing
           cd deploy
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f ./*.pdf
+          git add -f krishnakishore.pdf cover-letter-cloud.pdf index.html .nojekyll
           # No-op when the PDFs are byte-identical, instead of failing the run.
           if git diff --cached --quiet; then
             echo "PDFs unchanged; nothing to deploy."
