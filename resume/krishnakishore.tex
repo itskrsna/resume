@@ -93,6 +93,16 @@
 \providecommand{\roleid}{cloud}
 \input{roles/\roleid}
 
+%% The e-mail address is NOT stored in this public repo. To put it on a private copy,
+%% create resume/private-contact.tex containing:  \newcommand{\privateemail}{you@example.com}
+%% (that file is git-ignored). Without it, the header simply omits the e-mail.
+\InputIfFileExists{private-contact}{}{}
+\ifdefined\privateemail
+  \newcommand{\contactemail}{\email{\privateemail}}
+\else
+  \newcommand{\contactemail}{}
+\fi
+
 \begin{document}
 \name{Tummala Krishna Kishore}
 \tagline{\roletagline}
@@ -102,7 +112,7 @@
 \personalinfo{%
   % Not all of these are required!
   % You can add your own with \printinfo{symbol}{detail}
-  \email{imwebruster@gmail.com}
+  \contactemail
  \phone{+91-9985853599}
  %   \mailaddress{13-116, MothiNagar, 500045 India}
  %   \location{Hyderabad, India}

@@ -11,9 +11,12 @@
 \setlength{\parskip}{0.8em}
 \pagestyle{empty}
 
+% E-mail is not stored in the public repo; see README ("Adding your e-mail to a private copy").
+\InputIfFileExists{private-contact}{}{}
+
 \begin{document}
 {\LARGE\bfseries\color{VividPurple} Tummala Krishna Kishore}\par\vspace{2pt}
-{\small imwebruster@gmail.com \textbullet{} +91-9985853599 \textbullet{} krishnakishore.co.in \textbullet{} linkedin.com/in/itskrsna}
+{\small \ifdefined\privateemail\privateemail{} \textbullet{} \fi +91-9985853599 \textbullet{} krishnakishore.co.in \textbullet{} linkedin.com/in/itskrsna}
 
 \vspace{1.2em}
 \today

@@ -302,3 +302,6 @@ TSWLatexianTemp*
 tmp
 output
 gh-pages
+
+# Private contact details (never commit)
+resume/private-contact.tex
