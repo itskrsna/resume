@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tummala Krishna Kishore | Resume</title>
+<meta name="description" content="Resume and cover letters of Tummala Krishna Kishore, Cloud and Software Architect.">
+<style>
+  :root {
+    --bg: #f7f7fb; --card: #ffffff; --text: #1f1f2b; --muted: #5d5d70;
+    --accent: #3e0097; --accent-text: #ffffff; --border: #e2e2ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12111a; --card: #1b1a26; --text: #ececf4; --muted: #a2a2b8;
+      --accent: #a98bff; --accent-text: #12111a; --border: #2e2c3f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { margin: 0 0 4px; font-size: 2rem; line-height: 1.2; }
+  .tag { margin: 0 0 8px; color: var(--accent); font-weight: 600; }
+  .contact { margin: 0 0 32px; color: var(--muted); font-size: .95rem; }
+  .contact a { color: inherit; }
+  h2 { margin: 32px 0 12px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .card h3 { margin: 0; font-size: 1.05rem; }
+  .card p { margin: 0 0 8px; color: var(--muted); font-size: .92rem; flex: 1; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 8px 14px; border-radius: 8px; text-decoration: none;
+    font-weight: 600; font-size: .9rem; border: 1px solid var(--accent);
+    background: var(--accent); color: var(--accent-text);
+  }
+  .btn.alt { background: transparent; color: var(--accent); }
+  .btn:focus-visible, .contact a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Tummala Krishna Kishore</h1>
+  <p class="tag">Cloud &amp; Software Architect | Azure &middot; .NET &middot; Platform Engineering</p>
+  <p class="contact">
+    <a href="mailto:imwebruster@gmail.com">imwebruster@gmail.com</a> &middot;
+    <a href="https://krishnakishore.co.in">krishnakishore.co.in</a> &middot;
+    <a href="https://www.linkedin.com/in/itskrsna">LinkedIn</a> &middot;
+    <a href="https://github.com/itskrsna">GitHub</a>
+  </p>
+
+  <h2>Resume</h2>
+  <div class="grid">
+    <section class="card">
+      <h3>Cloud &amp; Software Architect</h3>
+      <p>Azure, .NET, Terraform, and platform engineering.</p>
+      <div class="actions">
+        <a class="btn" href="krishnakishore.pdf">View PDF</a>
+        <a class="btn alt" href="krishnakishore.pdf" download>Download</a>
+      </div>
+    </section>
+  </div>
+
+  <h2>Cover letters</h2>
+  <div class="grid">
+    <section class="card">
+      <h3>Cloud roles</h3>
+      <p>Template for cloud and software architect positions.</p>
+      <div class="actions">
+        <a class="btn" href="cover-letter-cloud.pdf">View PDF</a>
+        <a class="btn alt" href="cover-letter-cloud.pdf" download>Download</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>Built from LaTeX and published automatically with GitHub Actions.</footer>
+</main>
+</body>
+</html>
